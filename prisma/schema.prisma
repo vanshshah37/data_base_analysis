@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id                  String   @id @default(cuid())
+  companyName         String?
+  customerName        String?
+  email               String?  @unique
+  phone               String?
+  alternatePhone      String?
+  website             String?
+  location            String?
+  country             String?
+  state               String?
+  city                String?
+  address             String?
+  industry            String?
+  businessType        String?
+  potentialLevel      String?  // High, Medium, Low
+  leadScore           Int?
+  revenueSize         String?
+  employeeCount       String?
+  source              String?
+  status              String?  // Active, Inactive, Lead
+  tags                String?  // Comma separated strings for SQLite
+  notes               String?
+  lastContactDate     DateTime?
+  followUpDate        DateTime?
+  assignedSalesperson String?
+  linkedin            String?
+  socialLinks         String?  // Stringified JSON for SQLite
+  gstin               String?
+  stateCode           String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
